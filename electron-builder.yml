@@ -1,0 +1,48 @@
+# electron-builder config — Windows NSIS installer for the Viewport fork.
+# The run-from-folder PORTABLE build still uses scripts/build.js (electron-packager),
+# because portable mode + the config-store encryption key are baked into
+# src/build-config.json by that script. electron-builder is used ONLY for the
+# non-portable NSIS installer, which runs in standard mode (config in the OS
+# user-data dir) and needs no build-config.json.
+#
+# Build:  npm run build:win:installer     (needs Wine when run on Linux)
+appId: io.github.clovisd.unifi-protect-viewer
+productName: Unifi Protect Viewer
+copyright: MIT © Sebastian Loer
+directories:
+  output: builds/installer
+# Mirror scripts/build.js's ignore list. "**/*" is safe: electron-builder always
+# applies its own production-only node_modules filter, so dev deps are dropped.
+files:
+  - '**/*'
+  - '!builds/**'
+  - '!screenshots/**'
+  - '!scripts/**'
+  - '!test/**'
+  - '!docs/**'
+  - '!.superpowers/**'
+  - '!.husky/**'
+  - '!.gitea/**'
+  - '!src/build-config.json'
+  - '!**/*.test.js'
+  - '!electron-builder.yml'
+  - '!CHANGELOG.md'
+  - '!README.md'
+  - '!CONTRIBUTING.md'
+asar: true
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  # 512x512 PNG — electron-builder converts it to a multi-size .ico. The
+  # bundled src/img/128.ico only carries a 32x32 image, which electron-builder
+  # rejects (needs >=256x256); the portable electron-packager build is lenient
+  # and keeps using 128.ico.
+  icon: src/img/512.png
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  shortcutName: Unifi Protect Viewer
+  artifactName: unifi-protect-viewer-${version}-setup.${ext}

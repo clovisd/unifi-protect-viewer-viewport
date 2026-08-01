@@ -1,11 +1,12 @@
 {
   "name": "unifi-protect-viewer",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "description": "Distraction-free fullscreen liveview for Unifi Protect — auto-login, session renewal, dark theme and system tray support.",
   "main": "src/main.js",
   "scripts": {
     "start": "electron --ignore=builds .",
     "build": "node scripts/build.js",
+    "build:win:installer": "npx --yes electron-builder --win nsis --x64",
     "test": "node scripts/run-tests.js",
     "test:coverage": "node scripts/run-tests.js --coverage",
     "build:win:x64": "cross-env UPV_PLATFORM=win32 UPV_ARCH=x64 node scripts/build.js",
@@ -41,7 +42,9 @@
   "author": "Sebastian Loer",
   "license": "MIT",
   "dependencies": {
-    "electron-store": "8.2.0"
+    "electron-store": "8.2.0",
+    "selfsigned": "^2.4.1",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "cross-env": "10.1.0",

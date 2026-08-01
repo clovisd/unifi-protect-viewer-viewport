@@ -22,3 +22,4 @@ src/build-config.json
 
 # Agent plans
 .agents/plans/
+.portable-encryption-key
