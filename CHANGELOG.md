@@ -3,6 +3,13 @@
 All notable changes to this fork are documented here. This fork adds **Viewport
 mode** on top of [`digital195/unifi-protect-viewer`](https://github.com/digital195/unifi-protect-viewer).
 
+## [1.2.6] — 2026-08-02
+
+### Synced from upstream (digital195, v1.1.3)
+
+- **"Remember Me" is now ticked at login** — the app gets a long-lived (30-day) session instead of UniFi's default 2-hour one, so a Viewport no longer reloads roughly hourly. The checkbox is optional and handled gracefully when absent. _(Especially useful for always-on Viewport displays.)_ (upstream [#17](https://github.com/digital195/unifi-protect-viewer/pull/17))
+- **`console.warn` is now forwarded to `upv.log`** — `[upv…]` warnings are captured alongside logs for easier diagnostics. (upstream [#15](https://github.com/digital195/unifi-protect-viewer/pull/15))
+
 ## [1.2.5] — 2026-08-02
 
 ### Fixed — Viewport
