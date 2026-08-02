@@ -3,6 +3,17 @@
 All notable changes to this fork are documented here. This fork adds **Viewport
 mode** on top of [`digital195/unifi-protect-viewer`](https://github.com/digital195/unifi-protect-viewer).
 
+## [1.2.3] — 2026-08-02
+
+### Fixed — installer
+
+- **Installer no longer crashes on launch.** The 1.2.0–1.2.2 Windows installer could start with `Error: Cannot find module 'find-up'`. The cause was a corrupt build-machine `node_modules` (several nested runtime packages had lost everything but their `package.json`), which was copied verbatim into the app. Rebuilt from a clean, complete dependency tree; a new build-time guard (`build/afterPack.js`) now fails the build if the packaged `app.asar` is ever missing a critical runtime module, so this can't ship again. _(The portable build was never affected.)_
+- **Uninstaller no longer thinks the app is running when it isn't.** Because the app lives in the system tray, electron-builder's default "is it running?" check (a scan for any process under the install folder) could false-positive. The installer/uninstaller now closes the app by its exact executable name and proceeds, instead of nagging.
+
+### Improved — Viewport
+
+- **Settings opens on the Viewport tab in Viewport mode.** When a window is running as a Viewport, opening its settings now lands directly on the **Viewport** tab (rather than **Connection**) — the context you came to manage.
+
 ## [1.2.2] — 2026-08-02
 
 ### Improved — Viewport polish

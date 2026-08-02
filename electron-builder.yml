@@ -30,6 +30,10 @@ files:
   - '!README.md'
   - '!CONTRIBUTING.md'
 asar: true
+# Fail the build loudly if the packaged app.asar is missing critical runtime
+# module files (guards against a corrupt/sparse node_modules shipping again —
+# see build/afterPack.js for the full story behind v1.2.0–1.2.2's find-up crash).
+afterPack: build/afterPack.js
 win:
   target:
     - target: nsis
@@ -46,3 +50,7 @@ nsis:
   allowToChangeInstallationDirectory: true
   shortcutName: Unifi Protect Viewer
   artifactName: unifi-protect-viewer-${version}-setup.${ext}
+  # Replace electron-builder's default "is the app running?" check with an exact
+  # exe-name force-close (see build/installer.nsh). Fixes the uninstaller wrongly
+  # reporting the tray-capable app as still running.
+  include: build/installer.nsh
