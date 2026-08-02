@@ -3,7 +3,13 @@
 All notable changes to this fork are documented here. This fork adds **Viewport
 mode** on top of [`digital195/unifi-protect-viewer`](https://github.com/digital195/unifi-protect-viewer).
 
-## [1.2.4] — 2026-08-02
+## [1.2.5] — 2026-08-02
+
+### Fixed — Viewport
+
+- **Shared/public multiviews now display instead of falling back to "All Cameras."** A Viewport renders through a web session logged in as its admin account, and Protect hides *shared* multiviews from an account whose **"Show Shared Multiviews"** setting is off — so an assigned shared view silently showed as All Cameras. Viewport mode now **enables that setting for its account on every launch** (best-effort, non-fatal; it never blocks adoption). The Viewport settings also explain this, and show a warning if the auto-enable can't run (e.g. the account lacks permission).
+
+
 
 ### Fixed — Viewport
 
