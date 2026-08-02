@@ -3,6 +3,12 @@
 All notable changes to this fork are documented here. This fork adds **Viewport
 mode** on top of [`digital195/unifi-protect-viewer`](https://github.com/digital195/unifi-protect-viewer).
 
+## [1.2.4] — 2026-08-02
+
+### Fixed — Viewport
+
+- **Bad admin credentials are now reported.** Previously, if the Viewport's admin username or password was wrong, **Save & Restart** would silently bounce back to the Viewport settings with no explanation. The settings now open with a clear banner — _"The console rejected the admin username or password… Re-enter them below, then Save & Restart."_ — so it's obvious what to fix. Other fatal registration failures show an equivalent generic message.
+
 ## [1.2.3] — 2026-08-02
 
 ### Fixed — installer
