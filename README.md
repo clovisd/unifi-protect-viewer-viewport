@@ -1,5 +1,27 @@
 # <img src="src/img/128.png" width="40" height="40" valign="middle"> Unifi Protect Viewer
 
+> ## ⚠️ This fork is abandoned — the work continues as [OpenViewport](https://github.com/clovisd/openviewport)
+>
+> This fork added a **Viewport mode** to Unifi Protect Viewer (v1.2.x; the
+> releases below stay available). Upstream chose not to merge it
+> ([PR #16](https://github.com/digital195/unifi-protect-viewer/pull/16)): it
+> introduced a second code path built on a reverse-engineered device protocol,
+> which made the viewer harder to maintain. Fair call, and the reason this fork
+> stops here. It will receive no further updates. If you only want the plain
+> fullscreen viewer, use upstream
+> [digital195/unifi-protect-viewer](https://github.com/digital195/unifi-protect-viewer).
+>
+> The Viewport idea has been spun off into a standalone project,
+> **[OpenViewport](https://github.com/clovisd/openviewport)** (private while it
+> is being built; it will be public at its first release). OpenViewport turns
+> any PC, Mac, Linux box or Raspberry Pi into a UniFi Protect Viewport: it
+> registers as a real Viewport device and is managed entirely from Protect.
+> Unlike this fork it does **not** embed and restyle Protect's web UI. It renders
+> Live Views itself from Protect's livestream API, so it does not break when
+> Protect's UI changes, needs no admin web session on the display, runs lighter
+> on small boxes, supports several Viewports per machine, and updates itself.
+
+
 A clean Electron app that auto-logs into your Unifi Protect instance and presents the camera liveview in a distraction-free fullscreen layout — no headers, no navigation, no clutter.
 
 > Tested with Unifi Protect **v2.x – v6.x** running on UDM-Pro / UDM-SE / CloudKey Gen2+.
